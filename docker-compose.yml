@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  php-apache:
+    ports:
+      - "80:80"
+    build: './build/php'
+    environment:
+      KEYCLOACK_CLIENT_ID: ${KEYCLOACK_CLIENT_ID}
+      KEYCLOACK_CLIENT_SECRET: ${KEYCLOACK_CLIENT_SECRET}
+    volumes:
+      - ./app:/var/www/html
+      - "${PAYMENT_CERTS}:/etc/pki/tls/certs"
+  mysql:
+    ports:
+      - "3306:3306"
+    build: './build/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: "super-secret-password"
+      MYSQL_DATABASE: "my-wonderful-website"
+    volumes:
+      - dbData:/var/lib/mysql
+volumes:
+  app:
+  dbData:
