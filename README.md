@@ -21,6 +21,6 @@ Register to M1Pay first
 5- The key files must placed in merchant's server and set the path of the files under 'PAYMENT_CERTS' accordingly.  
 
 # Contact M1Pay for
-Registration : bd@mobilityone.com.my
-Transaction Inquiries : ccc@mobilityone.com.my
+Registration : bd@mobilityone.com.my  
+Transaction Inquiries : ccc@mobilityone.com.my  
 Technical Issues Related to PHP coding : m1pay@mobilityonegroup.com (Attention to Ms Amalina Nusyirwan)
