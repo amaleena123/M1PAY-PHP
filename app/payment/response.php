@@ -10,7 +10,7 @@ function strToHex($string){
 }
 
 
-//M1Pay Configuration before Payment Request
+//M1Pay Configuration before call the M1Pay API
 
 $env = "UAT";
 
@@ -24,7 +24,7 @@ switch($env){
         break;
 }
 
-//M1Pay Payment Request
+//M1Pay API - Get Transaction
 switch($env){
     case "UAT":
         $monepay_url = "https://gateway.m1payall.com/m1paywall/api/m-1-pay-transactions"; //"https://gateway-uat.m1pay.com.my/m1paywall/api/transaction";
@@ -51,8 +51,7 @@ curl_setopt($curl, CURLOPT_HEADER, false);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 $data = curl_exec($curl);
-
-//echo $data."<br><br>";
+////echo $data."<br><br>";
 
 curl_close($curl);
 
@@ -76,8 +75,11 @@ $headers = array(
     "Cache-Control:no-cache"
 );
 
+//Get the transaction id when M1Pay redirect to the merchant URL that has been set in Merchant Portal
+//Use this transaction id to call M1Pay API - Get Transaction
 $txn_info_url = $monepay_url."/".$_GET['transactionId'];
-//echo $txn_info_url; echo "<br>";
+////echo $txn_info_url; echo "<br>";
+
 $curl = curl_init();
 curl_setopt($curl,CURLOPT_URL, $txn_info_url);
 curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
@@ -93,5 +95,5 @@ $data = curl_exec($curl);
 
 curl_close($curl);
 
-
+// Result after called the API - Get Transaction
 echo "<pre>". print_r(json_decode($data),1)."</pre>";
