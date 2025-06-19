@@ -30,7 +30,7 @@ switch($env){
         $monepay_url = "https://gateway.m1payall.com/m1paywall/api/m-1-pay-transactions"; //"https://gateway-uat.m1pay.com.my/m1paywall/api/transaction";
         break;
     default:
-        $monepay_url = "https://gateway.m1pay.com.my/wall/api/api/m-1-pay-transactions";
+        $monepay_url = "https://gateway.m1pay.com.my/wall/api/m-1-pay-transactions";
         break;
 }
 
